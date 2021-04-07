@@ -1,3 +1,3 @@
 # React Native Apps
 
-### Aplicativos desenvolvido com React Native.
+### Aplicativos desenvolvidos com React Native.
