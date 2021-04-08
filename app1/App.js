@@ -6,7 +6,10 @@ import C1 from './componentes/comp1';
 export default function App1() {
   return (
     <View style={estilos.container}>
-      <C1 />
+      <C1 curso="React Native" nota="10" cor="#ff0" />
+      <C1 curso="C++" nota="10" cor="#f0f" />
+      <C1 curso="Javascript" nota="10" cor="#0ff" />
+      <C1 curso="C#" nota="10" cor="#000" />
       <Text style={estilos.txt0}>youtube.com/cfbcursos</Text>
       <Text style={{ color: '#f50', fontSize: 30 }}>cfbcursos.com.br</Text>
     </View>
@@ -16,7 +19,7 @@ export default function App1() {
 const estilos = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#444',
+    backgroundColor: '#ddd',
     alignItems: 'center',
     justifyContent: 'center',
   },

@@ -1,8 +1,16 @@
 import React from 'react';
 import { StyleSheet, Text } from 'react-native';
 
-export default function () {
-  return <Text style={estilos.txt2}>CFB Cursos - Curso de React Native</Text>;
+let nt, cor;
+
+export default function (props) {
+  nt = props.nota;
+  cor = props.cor;
+  return (
+    <Text style={estilos.txt2, {color: cor}}>
+      CFB Cursos - Curso de {props.curso}: Nota = {nt}
+    </Text>
+  );
 }
 
 const estilos = StyleSheet.create({
