@@ -5,11 +5,14 @@ import style from './estilos/Estilos';
 
 /* Formato Function */
 export default function App1() {
+  let vexibir = true;
   return (
     <View style={style.container}>
-      <Caixas />
+      <Caixas exibir={vexibir} />
       <Text style={style.textoPadrão}>youtube.com/cfbcursos</Text>
       <Text style={style.textoTitulo}>cfbcursos.com.br</Text>
+      {vexibir ? <Text>Curso de React Native</Text> : <Text>- - -</Text>}
+      {vexibir && <Text>Renderizado com Operador AND</Text>}
     </View>
   );
 }
