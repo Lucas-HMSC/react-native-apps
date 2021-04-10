@@ -1,25 +1,18 @@
 import React, { useState } from 'react';
 import { Text, View, StyleSheet, Button } from 'react-native';
-import Lp from './componentes/ListaPlana';
 import style from './estilos/Estilos';
+import CarroC from './componentes/CarroC';
+import CarroF from './componentes/CarroF';
 
 export default function App1() {
-  const [ligado, setLigado] = useState(true);
-
   return (
     <View style={style.container}>
-      <Button
-        title={ligado ? 'Desligar' : 'Ligar'}
-        onPress={() => setLigado(!ligado)}
-      />
-      {ligado ? (
-        <View>
-          <Text>CFB Cursos</Text>
-          <Text>Curso de React Native</Text>
-        </View>
-      ) : (
-        <Text>* * *</Text>
-      )}
+      <Text>CFB Cursos</Text>
+      <Text>Curso de React Native</Text>
+      <CarroC nome="Golf" />
+      <CarroC nome="HRV" />
+      <CarroF nome="Polo" />
+      <CarroF nome="Fit" />
     </View>
   );
 }
