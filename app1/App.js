@@ -1,21 +1,25 @@
-import React from 'react';
-import { Text, View, Image, StyleSheet, ImageBackground } from 'react-native';
+import React, { useState } from 'react';
+import { Text, View, StyleSheet, Button } from 'react-native';
 import Lp from './componentes/ListaPlana';
 import style from './estilos/Estilos';
 
-const image = { uri: 'https://reactjs.org/logo-og.png' };
-
 export default function App1() {
-  let vexibir = false;
+  const [ligado, setLigado] = useState(true);
+
   return (
     <View style={style.container}>
-      <ImageBackground source={image} style={estilos.imagemFundo}>
-        <View style={estilos.componentes}>
-          <Text style={estilos.texto}>CFB Cursos</Text>
-          <Text style={estilos.texto}>Curso de React Native</Text>
-          {/* <Lp /> */}
+      <Button
+        title={ligado ? 'Desligar' : 'Ligar'}
+        onPress={() => setLigado(!ligado)}
+      />
+      {ligado ? (
+        <View>
+          <Text>CFB Cursos</Text>
+          <Text>Curso de React Native</Text>
         </View>
-      </ImageBackground>
+      ) : (
+        <Text>* * *</Text>
+      )}
     </View>
   );
 }
