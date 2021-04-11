@@ -1,43 +1,62 @@
-import React, { useState } from 'react';
-import {
-  Text,
-  StyleSheet,
-  SafeAreaView,
-  StatusBar,
-  Button,
-} from 'react-native';
-import style from './estilos/Estilos';
+import React from 'react';
+import { Text, StyleSheet, View, Button } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+const Pilha = createStackNavigator();
+
+function TelaHome({ navigation }) {
+  return (
+    <View
+      style={{
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <Text>Tela Home</Text>
+      <Text>CFB Cursos</Text>
+      <Button title="Tela Canal" onPress={() => navigation.navigate('Canal')} />
+    </View>
+  );
+}
+
+function TelaCanal({ navigation }) {
+  return (
+    <View
+      style={{
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <Text>Tela Canal</Text>
+      <Text>youtube.com/cfbcursos</Text>
+      <Button title="Home" onPress={() => navigation.navigate('Home')} />
+      <Button title="Voltar" onPress={() => navigation.goBack()} />
+    </View>
+  );
+}
 
 export default function App1() {
-  const [cor, setCor] = useState('#222');
-
   return (
-    <SafeAreaView style={style.container}>
-      <StatusBar
-        backgroundColor={cor}
-        barStyle="light-content"
-        hidden={false}
-      />
-      <Text>CFB Cursos</Text>
-      <Text>Curso de React Native</Text>
-      <Button
-        title="Vermelho"
-        onPress={() => {
-          setCor('#D32F2F');
-        }}
-      />
-      <Button
-        title="Azul"
-        onPress={() => {
-          setCor('#303F9F');
-        }}
-      />
-      <Button
-        title="Verde"
-        onPress={() => {
-          setCor('#2E7D32');
-        }}
-      />
-    </SafeAreaView>
+    <NavigationContainer>
+      <Pilha.Navigator initialRouteName="Home">
+        <Pilha.Screen
+          name="Home"
+          component={TelaHome}
+          options={{
+            title: 'Tela Inicial',
+          }}
+        />
+        <Pilha.Screen
+          name="Canal"
+          component={TelaCanal}
+          options={{
+            title: 'Tela Canal',
+          }}
+        />
+      </Pilha.Navigator>
+    </NavigationContainer>
   );
 }
