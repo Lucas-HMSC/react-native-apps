@@ -1,9 +1,9 @@
 import React from 'react';
 import { Text, StyleSheet, View, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-const Pilha = createStackNavigator();
+const Guias = createBottomTabNavigator();
 
 function TelaHome({ navigation }) {
   return (
@@ -16,11 +16,6 @@ function TelaHome({ navigation }) {
     >
       <Text>Tela Home</Text>
       <Text>CFB Cursos</Text>
-      <Button title="Tela Canal" onPress={() => navigation.navigate('Canal')} />
-      <Button
-        title="Tela Cursos"
-        onPress={() => navigation.navigate('Cursos')}
-      />
     </View>
   );
 }
@@ -36,8 +31,6 @@ function TelaCanal({ navigation }) {
     >
       <Text>Tela Canal</Text>
       <Text>youtube.com/cfbcursos</Text>
-      <Button title="Home" onPress={() => navigation.navigate('Home')} />
-      <Button title="Voltar" onPress={() => navigation.goBack()} />
     </View>
   );
 }
@@ -52,34 +45,6 @@ function TelaCursos({ navigation }) {
       }}
     >
       <Text>Tela Cursos</Text>
-      <Button
-        title="React Native"
-        onPress={() =>
-          navigation.navigate('CursoReactNative', {
-            aulas: 100,
-            autor: 'Bruno',
-          })
-        }
-      />
-    </View>
-  );
-}
-
-function TelaCursoReactNative({ route, navigation }) {
-  const { aulas, autor } = route.params;
-  return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
-    >
-      <Text>Curso de React Native</Text>
-      <Text>Aulas: {aulas}</Text>
-      <Text>Autor: {autor}</Text>
-      <Button title="Home" onPress={() => navigation.navigate('Home')} />
-      <Button title="Voltar para Cursos" onPress={() => navigation.goBack()} />
     </View>
   );
 }
@@ -87,8 +52,8 @@ function TelaCursoReactNative({ route, navigation }) {
 export default function App1() {
   return (
     <NavigationContainer>
-      <Pilha.Navigator initialRouteName="Home">
-        <Pilha.Screen
+      <Guias.Navigator initialRouteName="Home">
+        <Guias.Screen
           name="Home"
           component={TelaHome}
           options={{
@@ -99,14 +64,14 @@ export default function App1() {
             headerTintColor: '#E1F5FE',
             headerRight: () => (
               <Button
-                title='Cursos'
-                color='#222'
+                title="Cursos"
+                color="#222"
                 onPress={() => alert('Botão Cursos Clicado')}
               />
-            )
+            ),
           }}
         />
-        <Pilha.Screen
+        <Guias.Screen
           name="Canal"
           component={TelaCanal}
           options={{
@@ -120,21 +85,14 @@ export default function App1() {
             },
           }}
         />
-        <Pilha.Screen
+        <Guias.Screen
           name="Cursos"
           component={TelaCursos}
           options={{
             title: 'Cursos do Canal',
           }}
         />
-        <Pilha.Screen
-          name="CursoReactNative"
-          component={TelaCursoReactNative}
-          options={{
-            title: 'Cursos de React Native',
-          }}
-        />
-      </Pilha.Navigator>
+      </Guias.Navigator>
     </NavigationContainer>
   );
 }
