@@ -1,9 +1,9 @@
 import React from 'react';
 import { Text, StyleSheet, View, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
-const Guias = createBottomTabNavigator();
+const Gavetas = createDrawerNavigator();
 
 function TelaHome({ navigation }) {
   return (
@@ -52,8 +52,8 @@ function TelaCursos({ navigation }) {
 export default function App1() {
   return (
     <NavigationContainer>
-      <Guias.Navigator initialRouteName="Home">
-        <Guias.Screen
+      <Gavetas.Navigator initialRouteName="Home">
+        <Gavetas.Screen
           name="Home"
           component={TelaHome}
           options={{
@@ -71,7 +71,7 @@ export default function App1() {
             ),
           }}
         />
-        <Guias.Screen
+        <Gavetas.Screen
           name="Canal"
           component={TelaCanal}
           options={{
@@ -85,14 +85,14 @@ export default function App1() {
             },
           }}
         />
-        <Guias.Screen
+        <Gavetas.Screen
           name="Cursos"
           component={TelaCursos}
           options={{
             title: 'Cursos do Canal',
           }}
         />
-      </Guias.Navigator>
+      </Gavetas.Navigator>
     </NavigationContainer>
   );
 }
