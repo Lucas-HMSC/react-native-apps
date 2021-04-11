@@ -93,6 +93,17 @@ export default function App1() {
           component={TelaHome}
           options={{
             title: 'Tela Inicial',
+            headerStyle: {
+              backgroundColor: '#4FC3F7',
+            },
+            headerTintColor: '#E1F5FE',
+            headerRight: () => (
+              <Button
+                title='Cursos'
+                color='#222'
+                onPress={() => alert('Botão Cursos Clicado')}
+              />
+            )
           }}
         />
         <Pilha.Screen
@@ -100,6 +111,13 @@ export default function App1() {
           component={TelaCanal}
           options={{
             title: 'Tela Canal',
+            headerStyle: {
+              backgroundColor: '#4FC3F7',
+            },
+            headerTintColor: '#E1F5FE',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
           }}
         />
         <Pilha.Screen
