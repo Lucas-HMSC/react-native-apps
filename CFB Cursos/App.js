@@ -1,19 +1,16 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Globais from './componentes/Globais';
+import React from 'react';
+import { Text, View } from 'react-native';
 
-export default class App1 extends Component {
-  nome = Globais.nome;
-  canal = Globais.canal;
-  num = Globais.num;
-
-  render() {
-    return (
+export default function App1(){
+  return (
+    <View>
       <View>
-        <Text>Nome: {this.nome}</Text>
-        <Text>Canal: {this.canal}</Text>
-        <Text>Número: {this.num}</Text>
+        <Text>CFB Cursos</Text>
+        <Text>Curso de React Native - </Text>
       </View>
-    );
-  }
-}
+      <View>
+        <Text>Aula 3</Text>
+        <Text>www.cfbcursos.com.br</Text>
+      </View>
+    </View>
+  )
