@@ -4,7 +4,7 @@ import { View, StyleSheet, Text, TouchableHighlight } from 'react-native';
 export default (props) => {
   return (
     <View style={styles.bloco}>
-      <TouchableHighlight style={styles.btn}>
+      <TouchableHighlight style={styles.btn} onPress={props.aoPressionar}>
         <Text style={styles.txtBtn}>Calcular</Text>
       </TouchableHighlight>
     </View>
@@ -25,6 +25,6 @@ const styles = StyleSheet.create({
   txtBtn: {
     textTransform: 'uppercase',
     color: '#fff',
-    fontSize: 20
+    fontSize: 20,
   },
 });

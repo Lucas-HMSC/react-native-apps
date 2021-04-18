@@ -5,7 +5,11 @@ export default (props) => {
   return (
     <View style={styles.bloco}>
       <Text>Digite o preço da Gasolina</Text>
-      <TextInput style={styles.txtInput} keyboardType="numeric" />
+      <TextInput
+        style={styles.txtInput}
+        keyboardType="numeric"
+        onChangeText={(text) => props.aoModificar(text)}
+      />
     </View>
   );
 };
