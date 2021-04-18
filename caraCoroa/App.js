@@ -14,7 +14,7 @@ export default function App() {
     require('./assets/moeda_cara.png'),
   ];
   let iMoeda = 0;
-  const maxGiros = 20;
+  const maxGiros = 9;
   const [moedaAtual, setMoedaAtual] = useState(moedas[iMoeda]);
 
   async function espera(tmp) {
@@ -24,13 +24,27 @@ export default function App() {
     await tempo(tmp);
   }
 
-  async function giraMoeda() {}
+  async function girarMoeda() {
+    iMoeda = 0;
+    for (let i = 0; i < maxGiros * 2; i++) {
+      iMoeda++;
+      if (iMoeda > 1) {
+        iMoeda = 0;
+      }
+      setMoedaAtual(moedas[iMoeda]);
+      await espera(100);
+    }
+    let res = Math.floor(Math.random() * 10) + 1;
+    if (res <= 5) res = 0;
+    else res = 1;
+    setMoedaAtual(moedas[res]);
+  }
 
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.titulo}>Cara ou Coroa</Text>
       <Image source={moedaAtual} />
-      <Button title="Girar" />
+      <Button title="Girar" onPress={() => girarMoeda()} />
     </SafeAreaView>
   );
 }
