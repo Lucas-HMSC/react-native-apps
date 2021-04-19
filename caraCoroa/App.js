@@ -1,63 +1,37 @@
-import React, { useState } from 'react';
-import {
-  StyleSheet,
-  Text,
-  SafeAreaView,
-  View,
-  Button,
-  Image,
-} from 'react-native';
+import React from 'react';
+import { StyleSheet } from 'react-native';
+import TelaJogo from './componentes/telaJogo';
+import TelaConfig from './componentes/telaConfig';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+const Menus = createBottomTabNavigator();
 
 export default function App() {
-  const moedas = [
-    require('./assets/moeda_coroa.png'),
-    require('./assets/moeda_cara.png'),
-  ];
-  let iMoeda = 0;
-  const maxGiros = 9;
-  const [moedaAtual, setMoedaAtual] = useState(moedas[iMoeda]);
-
-  async function espera(tmp) {
-    function tempo(ms) {
-      return new Promise((resolve) => setTimeout(resolve, ms));
-    }
-    await tempo(tmp);
-  }
-
-  async function girarMoeda() {
-    iMoeda = 0;
-    for (let i = 0; i < maxGiros * 2; i++) {
-      iMoeda++;
-      if (iMoeda > 1) {
-        iMoeda = 0;
-      }
-      setMoedaAtual(moedas[iMoeda]);
-      await espera(100);
-    }
-    let res = Math.floor(Math.random() * 10) + 1;
-    if (res <= 5) res = 0;
-    else res = 1;
-    setMoedaAtual(moedas[res]);
-  }
-
   return (
-    <SafeAreaView style={styles.container}>
-      <Text style={styles.titulo}>Cara ou Coroa</Text>
-      <Image source={moedaAtual} />
-      <Button title="Girar" onPress={() => girarMoeda()} />
-    </SafeAreaView>
+    <NavigationContainer theme={temaMenu}>
+      <Menus.Navigator initialRouteName="Jogo">
+        <Menus.Screen
+          name="Jogo"
+          component={TelaJogo}
+          options={{ title: 'Jogo' }}
+        />
+        <Menus.Screen name="Configurações" component={TelaConfig} />
+      </Menus.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+const temaMenu = {
+  dark: false,
+  colors: {
+    primary: 'rgb(255, 204, 0)', //Cor do texto menu selecionado
+    background: 'rgb(34, 34, 34)', //Cor do fundo
+    card: 'rgb(34, 34, 34)', //Cor do fundo do menu
+    text: 'rgb(255, 255, 255)', //Cor do texto
+    border: 'rgb(255, 255, 255)', //Cor da borda
+    Notification: 'rgb(255, 0, 0)', //Cor do emblema do navegador
   },
-  titulo: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+};
+
+const styles = StyleSheet.create({});
