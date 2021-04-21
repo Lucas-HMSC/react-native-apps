@@ -7,6 +7,8 @@ import {
   TouchableHighlight,
   TextInput,
 } from 'react-native';
+import Display from './componentes/Display';
+import Botao from './componentes/Botao';
 
 export default function App() {
   const [operacao, setOperacao] = useState(0);
@@ -19,21 +21,28 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <Text>Calculadora - CFB Cursos</Text>
-      <View style={styles.display}>
-        <TextInput
-          value={String(operacao)}
-          style={styles.txtDspOper}
-          onChangeText={(texto) => setOperacao(texto)}
-        ></TextInput>
-        <TextInput
-          value={String(resultado)}
-          style={styles.txtDspRes}
-        ></TextInput>
-      </View>
-      <View>
-        <TouchableHighlight style={styles.btn} onPress={() => operar()}>
-          <Text>OPERAR</Text>
-        </TouchableHighlight>
+      <Display valor={0} res={0} />
+      <View style={styles.btnContainer}>
+        <Botao label="AC" ac aoClicar={() => {}}></Botao>
+        <Botao label="(" aoClicar={() => {}}></Botao>
+        <Botao label=")" aoClicar={() => {}}></Botao>
+        <Botao label="/" operacao aoClicar={() => {}}></Botao>
+        <Botao label="7" aoClicar={() => {}}></Botao>
+        <Botao label="8" aoClicar={() => {}}></Botao>
+        <Botao label="9" aoClicar={() => {}}></Botao>
+        <Botao label="*" operacao aoClicar={() => {}}></Botao>
+        <Botao label="4" aoClicar={() => {}}></Botao>
+        <Botao label="5" aoClicar={() => {}}></Botao>
+        <Botao label="6" aoClicar={() => {}}></Botao>
+        <Botao label="-" operacao aoClicar={() => {}}></Botao>
+        <Botao label="1" aoClicar={() => {}}></Botao>
+        <Botao label="2" aoClicar={() => {}}></Botao>
+        <Botao label="3" aoClicar={() => {}}></Botao>
+        <Botao label="+" operacao aoClicar={() => {}}></Botao>
+        <Botao label="0" aoClicar={() => {}}></Botao>
+        <Botao label="." aoClicar={() => {}}></Botao>
+        <Botao label="<-" bs aoClicar={() => {}}></Botao>
+        <Botao label="=" igual aoClicar={() => {}}></Botao>
       </View>
     </SafeAreaView>
   );
@@ -42,20 +51,11 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
   },
-  display: {
-    backgroundColor: '#333',
-    padding: 10,
-  },
-  txtDspOper: {
-    color: '#fff',
-  },
-  txtDspRes: {
-    color: '#fff',
-  },
-  btn: {
-    backgroundColor: '#aaa',
-    padding: 20,
+  btnContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
   },
 });
