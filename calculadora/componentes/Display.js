@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  StyleSheet,
-  View,
-  Text,
-  TouchableHighlight,
-  ColorPropType,
-} from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 
 export default (props) => {
   return (
