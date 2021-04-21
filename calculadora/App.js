@@ -9,35 +9,32 @@ import {
 } from 'react-native';
 
 export default function App() {
-  const [valor1, setValor1] = useState(0);
-  const [valor2, setValor2] = useState(0);
+  const [operacao, setOperacao] = useState(0);
   const [resultado, setResultado] = useState(0);
 
-  const soma = () => {
-    setResultado(valor1 + valor2);
+  const operar = () => {
+    setResultado(eval(operacao));
   };
 
   return (
     <SafeAreaView style={styles.container}>
       <Text>Calculadora - CFB Cursos</Text>
-      <TextInput
-        value={String(valor1)}
-        style={styles.display}
-        onChangeText={(texto) => setValor1(texto)}
-      ></TextInput>
-      <TextInput
-        value={String(valor2)}
-        style={styles.display}
-        onChangeText={(texto) => setValor2(texto)}
-      ></TextInput>
-      <TextInput
-        value={String(resultado)}
-        style={styles.display}
-        onChangeText={(texto) => setResultado(texto)}
-      ></TextInput>
-      <TouchableHighlight style={styles.btn} onPress={() => soma()}>
-        <Text>SOMAR</Text>
-      </TouchableHighlight>
+      <View style={styles.display}>
+        <TextInput
+          value={String(operacao)}
+          style={styles.txtDspOper}
+          onChangeText={(texto) => setOperacao(texto)}
+        ></TextInput>
+        <TextInput
+          value={String(resultado)}
+          style={styles.txtDspRes}
+        ></TextInput>
+      </View>
+      <View>
+        <TouchableHighlight style={styles.btn} onPress={() => operar()}>
+          <Text>OPERAR</Text>
+        </TouchableHighlight>
+      </View>
     </SafeAreaView>
   );
 }
@@ -46,12 +43,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    padding: 10,
   },
   display: {
-    borderWidth: 1,
-    borderRadius: 10,
+    backgroundColor: '#333',
     padding: 10,
+  },
+  txtDspOper: {
+    color: '#fff',
+  },
+  txtDspRes: {
+    color: '#fff',
   },
   btn: {
     backgroundColor: '#aaa',
