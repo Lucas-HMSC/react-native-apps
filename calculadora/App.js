@@ -15,7 +15,7 @@ export default function App() {
   const [vres, setVres] = useState(estados.resultado);
 
   const addDigito = (d) => {
-    if (d === '+' || d === '-' || d === '/' || d === '*') {
+    if (d === ' + ' || d === ' - ' || d === ' / ' || d === ' * ') {
       estados.ponto = false;
     }
     if (d === '.' && !estados.ponto) {
@@ -24,7 +24,7 @@ export default function App() {
     } else if (d === '.' && estados.ponto) {
       return;
     }
-    if ((d === '+' || d === '-' || d === '/' || d === '*') && estados.operado) {
+    if ((d === ' + ' || d === ' - ' || d === ' / ' || d === ' * ') && estados.operado) {
       estados.valorTela = estados.resultado;
       estados.resultado = 0;
     }
