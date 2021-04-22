@@ -7,3 +7,4 @@
     * [Calculadora de Combustível](https://github.com/Lucas-HMSC/react-native-apps/tree/main/calcCombustivel)
     * [Calculadora Comum](https://github.com/Lucas-HMSC/react-native-apps/tree/main/calculadora)
     * [Cara ou Coroa](https://github.com/Lucas-HMSC/react-native-apps/tree/main/caraCoroa)
+  * [Developer Plus](https://www.youtube.com/playlist?list=PLxF2lyHGcERApnjQPgeeEIzJJdGurraMW): em andamento. 
