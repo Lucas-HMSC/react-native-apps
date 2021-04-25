@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, Text, TextInput, Button, Alert} from 'react-native';
 
-export default class PizzaTranslatorApp extends Component {
+export default class ButtonApp extends Component {
   onPressButton() {
     Alert.alert('Você clicou no botão');
   }
