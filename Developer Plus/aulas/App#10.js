@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {ScrollView, View, StyleSheet, Text} from 'react-native';
 
-export default class PizzaTranslatorApp extends Component {
+export default class ScrollViewApp extends Component {
   render() {
     return (
       <ScrollView>
